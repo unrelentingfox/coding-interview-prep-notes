@@ -48,7 +48,7 @@ class Solution {
         return result
     }
 
-    tailrec fun pathSumRec(root: TreeNode?, targetSum: Int, path: List<Int>, result: MutableList<List<Int>>) {
+    fun pathSumRec(root: TreeNode?, targetSum: Int, path: List<Int>, result: MutableList<List<Int>>) {
         if (root == null) {
         } else if (root.left == null && root.right == null && root.`val` == targetSum) {
             result.add(path + listOf(root.`val`))

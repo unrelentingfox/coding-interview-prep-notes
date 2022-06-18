@@ -54,7 +54,7 @@ Submission link: https://leetcode.com/submissions/detail/720792509/
  * }
  */
 class Solution {
-    tailrec fun hasPathSum(root: TreeNode?, targetSum: Int): Boolean {
+    fun hasPathSum(root: TreeNode?, targetSum: Int): Boolean {
         return if (root == null) {
             false
         } else if (root.left == null && root.right == null && root.`val` == targetSum) {
@@ -70,5 +70,5 @@ class Solution {
 ### Time
 `O(n)` where n is the number of nodes
 ### Space
-`O(n)` in the worst case (every node has one child) we would have to store all of the nodes in either the call-stack or the stack generated using tailrec.
+`O(n)` in the worst case (every node has one child) we would have to store all of the nodes in the call-stack
 

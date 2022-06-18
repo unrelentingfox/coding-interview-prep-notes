@@ -1,5 +1,6 @@
 # Path with Given Sequence
 ## Solution
+
 ## Code
 Submission link: N/A
 ```

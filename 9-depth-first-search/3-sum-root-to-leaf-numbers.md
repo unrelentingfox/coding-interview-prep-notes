@@ -49,7 +49,7 @@ Submission link: https://leetcode.com/submissions/detail/720836624/
  * }
  */
 class Solution {
-    tailrec fun sumNumbers(root: TreeNode?, digits: Int = 0, result: Int = 0): Int {
+    fun sumNumbers(root: TreeNode?, digits: Int = 0, result: Int = 0): Int {
         return if (root == null) {
             result
         } else {
