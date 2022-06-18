@@ -1,6 +1,31 @@
 # Path with Given Sequence
-## Solution
+Given a binary tree and a number sequence, find if the sequence is present as a root-to-leaf path in the given tree.
 
+Example 1:
+```
+   1
+  / \
+ 7   9
+    / \
+   2   9
+```
+> Sequence: [1, 9, 9]  
+Output: true Explanation: The tree has a path 1 -> 9 -> 9.
+
+Example 2:
+```
+     1
+    / \
+   0   1
+   |   | \
+   1   6  5
+```
+> Sequence: [1, 0, 7]  
+Output: false Explanation: The tree does not have a path 1 -> 0 -> 7.
+
+> Sequence: [1, 1, 6]  
+> Output: true Explanation: The tree has a path 1 -> 1 -> 6.
+## Solution
 ## Code
 Submission link: N/A
 ```
@@ -16,13 +41,14 @@ internal class TreeNode(var `val`: Int) {
 }
 
 internal object PathWithGivenSequence {
-    tailrec fun findPath(root: TreeNode?, sequence: IntArray, index: Int = 0, sibling: TreeNode? = null): Boolean {
+    tailrec fun findPath(root: TreeNode?, sequence: IntArray, index: Int = 0): Boolean {
         return if (root == null) {
             index == sequence.size
-        } else if (root.`val` != sequence[index]) {
-            findPath(sibling, sequence, index)
+        } else if (index >= sequence.size || root.`val` != sequence[index]) {
+            false
         } else {
-            findPath(root.right, sequence, index + 1, root.left)
+            val newIndex = index + 1
+            findPath(root.left, sequence, newIndex) || findPath(root.right, sequence, newIndex)
         }
     }
 
@@ -43,6 +69,6 @@ internal object PathWithGivenSequence {
 ```
 ## Complexity
 ### Time
-`O()`
+`O(n)`
 ### Space
-`O()`
+`O(n)`
