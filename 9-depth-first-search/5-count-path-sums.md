@@ -74,3 +74,48 @@ The time complexity of the above algorithm is `O(N^2)` in the worst case, where 
 The space complexity of the above algorithm will be `O(N)`. This space will be used to store the recursion stack. The worst case will happen when the given tree is a linked list (i.e., every node has only one child). We also need `O(N)` space for storing the currentPath in the worst case.
 
 Overall space complexity of our algorithm is `O(N)`.
+
+## Alternative Solution (all recursion)
+Instead of keeping a list of the nodes, we could also create a separate recursive function that counts all of the target sums starting from root.
+## Code
+Submission link: https://leetcode.com/submissions/detail/725450928/
+```
+/**
+ * Example:
+ * var ti = TreeNode(5)
+ * var v = ti.`val`
+ * Definition for a binary tree node.
+ * class TreeNode(var `val`: Int) {
+ *     var left: TreeNode? = null
+ *     var right: TreeNode? = null
+ * }
+ */
+class Solution {
+    fun pathSum(root: TreeNode?, targetSum: Int, path: LinkedList<Int> = LinkedList()): Int {
+        return if (root == null) {
+            0
+        } else {
+            val sums = pathSumFrom(root, targetSum)
+            val leftSums = pathSum(root.left, targetSum, path)
+            val rightSums = pathSum(root.right, targetSum, path)
+            sums + leftSums + rightSums
+        }
+    }
+
+    fun pathSumFrom(root: TreeNode?, targetSum: Int): Int {
+        return if (root == null) {
+            0
+        } else {
+            val sum = root.`val`
+            val newTargetSum = targetSum - sum
+            val count = if (newTargetSum == 0) 1 else 0
+            count + pathSumFrom(root.left, newTargetSum) + pathSumFrom(root.right, newTargetSum)
+        }
+    }
+}
+```
+## Complexity
+### Time
+Same as above
+### Space
+Same as above
