@@ -78,6 +78,8 @@ class Solution {
 ```
 ## Complexity
 ### Time
-`O()`
+Insert all of the intervals: `O(n log n)`  
+Find each right interval: `O(n)`  
+Overall: `O(n log n)`
 ### Space
-`O()`
+`O(2n) -> O(n)` since we have to store all of the intervals in the priority queues
