@@ -38,7 +38,7 @@ If we look closely, we will realize that when we add a new number (5), we take e
 1. Inserting ‘5’ after ‘1’: [3,1,5]
 
 ## Code
-Submission link: https://leetcode.com/submissions/detail/731146997/
+Submission link: https://leetcode.com/submissions/detail/731160984/
 ```
 class Solution {
     fun permute(nums: IntArray): List<List<Int>> {
@@ -48,7 +48,7 @@ class Solution {
             perms.forEach { perm ->
                 // add each number in every possible position 0 - n
                 for (i in 0..perm.size) {
-                    val newPerm = perm.toMutableList()
+                    val newPerm = LinkedList(perm)
                     newPerm.add(i, num)
                     newPerms.add(newPerm)
                 }
