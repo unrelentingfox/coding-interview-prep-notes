@@ -93,7 +93,7 @@ Copied from: https://gist.github.com/tykurtz/3548a31f673588c05c89f9ca42067bc4
 3. https://leetcode.com/problems/permutations/
 4. https://leetcode.com/problems/letter-case-permutation/
 5. https://leetcode.com/problems/generate-parentheses/
-6. https://leetcode.com/problems/generalized-abbreviation/
+6. https://leetcode.com/problems/generalized-abbreviation/ or https://www.lintcode.com/problem/779/
 7. https://leetcode.com/problems/different-ways-to-add-parentheses/
 8. https://leetcode.com/problems/unique-binary-search-trees-ii/
 9. https://leetcode.com/problems/unique-binary-search-trees/
