@@ -17,7 +17,7 @@ Constraints:
 * `1 <= nums.length <= 10`
 * `-10 <= nums[i] <= 10`
 * `All the numbers of nums are unique.`
-## Solution
+## Solution (BFS)
 To generate all subsets of the given set, we can use the Breadth First Search (BFS) approach. We can start with an empty set, iterate through all numbers one-by-one, and add them to existing sets to create new subsets.
 
 Let’s take the example-2 mentioned above to go through each step of our algorithm:
@@ -64,3 +64,34 @@ class Solution {
 Since, in each step, the number of subsets doubles as we add each element to all the existing subsets, therefore, we will have a total of `O(2^N)` subsets, where `N` is the total number of elements in the input set. And since we construct a new subset from an existing set, therefore, the time complexity of the above algorithm will be `O(N*2^N)`.
 ### Space
 All the additional space used by our algorithm is for the output list. Since we will have a total of `O(2^N)` subsets, and each subset can take up to `O(N)` space, therefore, the space complexity of our algorithm will be `O(N*2^N)`.
+
+## Solution (Backtracking DFS)
+Another way we can solve this problem is by recursively backtracking which is usually a brute force solution, but since we need to generate every possible outcome, it is the most efficient solution.
+
+The idea is that for each recursive call we will make a choice, giving us our left and right subtrees. The choice is whether to add the current number or not.
+## Code (Recursive)
+Submission link: https://leetcode.com/submissions/detail/734708713/
+```
+class Solution {
+    fun subsets(
+        nums: IntArray,
+        i: Int = 0,
+        curr: LinkedList<Int> = LinkedList(),
+        result: MutableList<List<Int>> = mutableListOf()
+    ): List<List<Int>> {
+        return if (i == nums.size) {
+            result.also { it.add(curr.toList()) }
+        } else {
+            val next = i + 1
+            subsets(nums, next, curr.also { it.addFirst(nums[i]) }, result)
+            subsets(nums, next, curr.also { it.removeFirst() }, result)
+            result
+        }
+    }
+}
+```
+## Complexity
+### Time
+`O(2^n)` since we have two choices, thus two branches in our tree we have a binary tree.
+### Space
+`O(2^n)` used by the result set, and the call stack

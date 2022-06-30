@@ -64,27 +64,26 @@ class Solution {
 We know that there are a total of `N!` permutations of a set with ‘N’ numbers. In the algorithm above, we are iterating through all of these permutations with the help of the two ‘for’ loops. In each iteration, we go through all the current permutations to insert a new number in them on line 17 (line 23 for C++ solution). To insert a number into a permutation of size ‘N’ will take `O(N)`, which makes the overall time complexity of our algorithm `O(N*N!)`.
 ### Space
 All the additional space used by our algorithm is for the result list and the queue to store the intermediate permutations. If you see closely, at any time, we don’t have more than `N!` permutations between the result list and the queue. Therefore the overall space complexity to store `N!` permutations each containing `N` elements will be `O(N*N!)`.
-## Code (Recursive)
+## Solution Recursive (DFS)
+We could also solve this problem by DFS
+## Code
 Submission link: https://leetcode.com/submissions/detail/731189910/
 ```
 class Solution {
-    fun permute(
-        nums: IntArray,
-        index: Int = 0,
-        perm: List<Int> = listOf(),
-        perms: MutableList<List<Int>> = mutableListOf()
-    ): List<List<Int>> {
-        return if (perm.size == nums.size) {
-            perms.add(perm)
-            perms
+    fun permute(nums: IntArray): List<List<Int>> {
+        return permute(nums.toList(), listOf())
+    }
+
+    fun permute(nums: List<Int>, curr: List<Int>, result: MutableList<List<Int>> = ArrayList(nums.size * nums.size)): List<List<Int>> {
+        return if (nums.size == 0) {
+            result.add(curr)
+            result
         } else {
-            var newPerms: List<List<Int>> = perms
-            for (i in 0..perm.size) {
-                val newPerm = LinkedList(perm)
-                newPerm.add(i, nums[index])
-                newPerms = permute(nums, index + 1, newPerm, perms)
+            repeat(nums.size) { i ->
+                val remaining = nums.filterIndexed { j, _ -> j != i }
+                permute(remaining, curr + listOf(nums[i]))
             }
-            newPerms
+            result
         }
     }
 }

@@ -1,4 +1,6 @@
 # Subsets
 A huge number of coding interview problems involve dealing with Permutations and Combinations of a given set of elements. This pattern describes an efficient Breadth First Search (BFS) approach to handle all these problems.
 
+The approach is called backtracking.
+
 Let’s jump onto our first problem to develop an understanding of this pattern.
