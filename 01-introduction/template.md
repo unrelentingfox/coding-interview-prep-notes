@@ -1,10 +1,10 @@
 # Problem
 ## Solution
-## Code (Recursive)
+## Code (kotlin)
 Submission link: N/A
 ```
 ```
-## Code (Iterative)
+## Code (java)
 Submission link: N/A
 ```
 ```
