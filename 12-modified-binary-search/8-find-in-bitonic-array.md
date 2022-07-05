@@ -29,7 +29,7 @@ For this problem we can split this into three binary searches.
 2. Then we will do an ascending binary search on the left half of the array including the peak, if we find the value we can stop here.
 3. Finally if we didn't find the value then we will do a descending binary search on the right half of the array excluding the peak.
 ## Code (kotlin)
-Submission link: https://leetcode.com/submissions/detail/739485373/
+Submission link: https://leetcode.com/submissions/detail/739501131/
 ```
 /**
  * // This is MountainArray's API interface.
@@ -41,6 +41,16 @@ Submission link: https://leetcode.com/submissions/detail/739485373/
  */
 class Solution {
     fun findInMountainArray(target: Int, arr: MountainArray): Int {
+        val peak = findPeak(arr)
+        val left = find(target, arr, 0, peak, true)
+        return if (left != -1) {
+            left
+        } else {
+            find(target, arr, peak + 1, arr.length() - 1, false)
+        }
+    }
+
+    private fun findPeak(arr: MountainArray): Int {
         var s = 0
         var e = arr.length() - 1
         while (s < e) {
@@ -51,21 +61,10 @@ class Solution {
                 e = m
             }
         }
-        val peak = s
-        val left = search(target, arr, 0, peak, true)
-        return if (arr.get(left) == target) {
-            left
-        } else {
-            val right = search(target, arr, peak + 1, arr.length() - 1, false)
-            if (arr.get(right) == target) {
-                right
-            } else {
-                -1
-            }
-        }
+        return s
     }
 
-    private fun search(target: Int, arr: MountainArray, start: Int, end: Int, asc: Boolean): Int {
+    private fun find(target: Int, arr: MountainArray, start: Int, end: Int, asc: Boolean): Int {
         var s = start
         var e = end
         while (s < e) {
@@ -76,12 +75,12 @@ class Solution {
                 e = m
             }
         }
-        return s
+        return if (arr.get(s) == target) s else -1
     }
 }
 ```
 ## Code (java)
-Submission link: https://leetcode.com/submissions/detail/739496664/
+Submission link: https://leetcode.com/submissions/detail/739503172/
 ```
 /**
  * // This is MountainArray's API interface.
@@ -91,9 +90,18 @@ Submission link: https://leetcode.com/submissions/detail/739496664/
  *     public int length() {}
  * }
  */
-
 class Solution {
     public int findInMountainArray(int target, MountainArray arr) {
+        int peak = findPeak(arr);
+        int left = find(target, arr, 0, peak, true);
+        if (left != -1) {
+            return left;
+        } else {
+            return find(target, arr, peak + 1, arr.length() - 1, false);
+        }
+    }
+
+    private int findPeak(MountainArray arr) {
         int s = 0;
         int e = arr.length() - 1;
         while (s < e) {
@@ -104,21 +112,10 @@ class Solution {
                 e = m;
             }
         }
-        // s == e and they are pointing at the peak
-        int left = search(target, arr, 0, s, true);
-        if (arr.get(left) == target) {
-            return left;
-        } else {
-            int right = search(target, arr, s + 1, arr.length() - 1, false);
-            if (arr.get(right) == target) {
-                return right;
-            } else {
-                return -1;
-            }
-        }
+        return s;
     }
 
-    private int search(int target, MountainArray arr, int s, int e, boolean asc) {
+    private int find(int target, MountainArray arr, int s, int e, boolean asc) {
         while (s < e) {
             int m = s + (e - s) / 2;
             if ((asc && arr.get(m) < target) || (!asc && arr.get(m) > target)) {
@@ -127,7 +124,11 @@ class Solution {
                 e = m;
             }
         }
-        return s;
+        if (arr.get(s) == target) {
+            return s;
+        } else {
+            return -1;
+        }
     }
 }
 ```
