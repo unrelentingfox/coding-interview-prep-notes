@@ -37,6 +37,24 @@ Given array: [3, 1, 5, 12, 2, 11], and K=3
 1. The last number is ‘11’ which is bigger than the root (which is ‘3’), so let’s take out ‘3’ and insert ‘11’. Finally, the heap has the largest three numbers: [5, 12, 11]
 
 As discussed above, it will take us `O(logK)` to extract the minimum number from the min-heap. So the overall time complexity of our algorithm will be `O(K*logK+(N-K)*logK)` since, first, we insert ‘K’ numbers in the heap and then iterate through the remaining numbers and at every step, in the worst case, we need to extract the minimum number and insert a new number in the heap. This algorithm is better than `O(N*logN)`.
+
+## Code (kotlin)
+```kotlin
+class Solution {
+    fun findKthLargest(nums: IntArray, k: Int): Int {
+        val min = PriorityQueue<Int>()
+        nums.forEachIndexed{ i, num ->
+            if (i < k) {
+                min.offer(num)
+            } else if (num > min.peek()) {
+                min.poll()
+                min.offer(num)
+            }
+        }
+        return min.toList()
+    }
+}
+```
 ## Code (java)
 ```java
 import java.util.*;
