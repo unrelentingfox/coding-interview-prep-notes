@@ -37,7 +37,7 @@ class SumOfElements {
   }
 }
 ```
-## Complexity
+## Cmplexity
 ### Time
 `O(n log k2)`
 ### Space
