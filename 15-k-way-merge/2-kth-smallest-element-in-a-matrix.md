@@ -22,7 +22,7 @@ class Solution {
                 }
             }
         }
-        throw Exception("Expected atleast k elemenets")
+        throw IllegalArgumentException("Expected atleast k elemenets")
     }
 }
 ```
