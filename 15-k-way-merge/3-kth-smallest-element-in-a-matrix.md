@@ -28,6 +28,6 @@ class Solution {
 ```
 ## Complexity
 ### Time
-`O(k log n)` where n is the number of input arrays
+insert min(k,n) number of elements into the heap `O(min(k,n))` + add up to k elements in the minheap so: `O(min(k, n) + k log n)`
 ### Space
-`O(n)`
+`O(n)` we will store one number for each n rows
