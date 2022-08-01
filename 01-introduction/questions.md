@@ -143,7 +143,7 @@ Copied from: https://gist.github.com/tykurtz/3548a31f673588c05c89f9ca42067bc4
 1. https://www.educative.io/courses/grokking-dynamic-programming-patterns-for-coding-interviews/RM1BDv71V60
 2. https://www.educative.io/courses/grokking-dynamic-programming-patterns-for-coding-interviews/3jEPRo5PDvx or https://leetcode.com/problems/partition-equal-subset-sum/
 3. https://www.educative.io/courses/grokking-dynamic-programming-patterns-for-coding-interviews/3j64vRY6JnR
-4. https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/ or https://leetcode.com/problems/last-stone-weight-ii/ similar concept, but problem description is more abstract.
+4. https://leetcode.com/problems/last-stone-weight-ii/ similar concept, but problem description is more abstract.
 5. https://leetcode.com/problems/combination-sum-ii/ similar, but return the number of combinations instead of the combinations
 6. https://leetcode.com/problems/target-sum/
 7. BONUS : Not in grokking, but I still found this very useful https://leetcode.com/problems/ones-and-zeroes/
