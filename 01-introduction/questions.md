@@ -151,7 +151,7 @@ Copied from: https://gist.github.com/tykurtz/3548a31f673588c05c89f9ca42067bc4
 ## 17. Topological Sort
 1. First problem is identical to the following three
 2. https://leetcode.com/problems/course-schedule/
-3. https://leetcode.com/problems/course-schedule-ii/ 
+3. https://leetcode.com/problems/course-schedule-ii/
 4. Same as above, but return all instead of any
 5. https://leetcode.com/problems/alien-dictionary/
 6. https://leetcode.com/problems/sequence-reconstruction/description/
