@@ -44,6 +44,6 @@ class Solution {
 ```
 ## Complexity
 ### Time
-`O(n * e)` where n is the amount of distinct numbers, and e is the number of edges we have
+`O(n + e)` where n is the amount of distinct numbers, and e is the number of edges we have
 ### Space
-`O(n * e)`
+`O(n + e)`
